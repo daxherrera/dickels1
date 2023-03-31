@@ -1,49 +1,59 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-import "./styles/Home.css";
+import {
+  useAddress,
+  useDisconnect,
+  useMetamask,
+  useToken,
+  useTokenBalance,
+  useContract,
+  useContractRead,
+  useContractWrite,
+} from "@thirdweb-dev/react";
 
 export default function Home() {
+  // Hooks to connect to the user's MetaMask Wallet and view their address
+  const address = useAddress();
+  const connectWithMetamask = useMetamask();
+  const disconnectWallet = useDisconnect();
+
+  let contractAddress = "0xB3Ee837af8F89cf21217C695366993D091397ce3";
+  // Connect to the token smart contract
+  const token = useToken(contractAddress); // your token contract address here
+
+  const { contract } = useContract(contractAddress);
+  const { data, isLoading} = useContractRead(contract, "name");
+  const { data: allowance, isLoading: allowanceLoading, error  } = useContractRead(
+    contract, 
+    "allowance", 
+    "0x5fda8baa7d5e9404fe72166c9a767bb875b0efab",
+    address
+  );
+
+  const { data: tokenBalance } = useTokenBalance(token, address);
+
+  const { mutateAsync, writeLoading, writeError } = useContractWrite(contract, "transferFrom");
+  
+  const transferDickels = () => {
+    mutateAsync(["0x5fda8baa7d5e9404fe72166c9a767bb875b0efab", address, allowance]);
+   }
+ 
+
   return (
-    <div className="container">
-      <main className="main">
-        <h1 className="title">
-          Welcome to <a href="https://thirdweb.com/">thirdweb</a>!
-        </h1>
+    <div>
+      {address ? (
+        <>
+          <button onClick={disconnectWallet}>Disconnect Wallet</button>
+          <p>Your address: {address}</p>
+          <p>
+            Your balance: {tokenBalance?.displayValue} {tokenBalance?.symbol}  <br/>
+          </p>
+          <div>{isLoading ? <p>Loading...</p> : <p>Contract Name: {data}</p>}</div>
+          <div>{allowanceLoading ? <p>Loading...</p> : <p>Allowance: {allowance.toNumber()}</p>}</div>
+          <button onClick={transferDickels}>Get Dickels</button>
 
-        <p className="description">
-          Get started by configuring your desired network in{" "}
-          <code className="code">src/index.js</code>, then modify the{" "}
-          <code className="code">src/App.js</code> file!
-        </p>
-
-        <div className="connect">
-          <ConnectWallet />
-        </div>
-
-        <div className="grid">
-          <a href="https://portal.thirdweb.com/" className="card">
-            <h2>Portal &rarr;</h2>
-            <p>
-              Guides, references and resources that will help you build with
-              thirdweb.
-            </p>
-          </a>
-
-          <a href="https://thirdweb.com/dashboard" className="card">
-            <h2>Dashboard &rarr;</h2>
-            <p>
-              Deploy, configure and manage your smart contracts from the
-              dashboard.
-            </p>
-          </a>
-
-          <a href="https://portal.thirdweb.com/templates" className="card">
-            <h2>Templates &rarr;</h2>
-            <p>
-              Discover and clone template projects showcasing thirdweb features.
-            </p>
-          </a>
-        </div>
-      </main>
+        </>
+      ) : (
+        <button onClick={connectWithMetamask}>Connect Wallet</button>                
+      )}
     </div>
   );
 }
