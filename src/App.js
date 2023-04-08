@@ -17,7 +17,7 @@ export default function Home() {
   const connectWithMetamask = useMetamask();
   const disconnectWallet = useDisconnect();
 
-  let contractAddress = "0xB3Ee837af8F89cf21217C695366993D091397ce3";
+  let contractAddress = "0x7654Cd0171B7c3a6C8504795810f221a20C3Dc3f";
   // Connect to the token smart contract
   const token = useToken(contractAddress); // your token contract address here
 
