@@ -35,6 +35,20 @@ body{
     background: transparent;
     width: fit-content;
     border:2px solid #ff80f7;
+    color: #dbf7f7;
+    border-radius: 10px;
+    justify-self: center;
+    opacity: .85;
+    transition: .2s;
+    /* box-shadow: 0px 0px 30px 2px #fe38f2; */
+}
+
+.glowie-button:hover{
+    box-shadow: inset 0px 0px 30px 2px #fe38f2,0px 0px 30px 10px #fe38f2;
+    text-shadow: aqua 2px 0 10px,aqua 2px 0 10px;
+    cursor: pointer;
+    opacity: 1;
+    /* transition: .4s; */
     box-shadow: inset 0px 0px 30px 6px #fe38f2,0px 0px 30px 10px #fe38f2;
     color: #dbf7f7;
     text-shadow: aqua 2px 0 10px,aqua 2px 0 10px;
