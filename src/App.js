@@ -44,12 +44,12 @@ export default function Home() {
       {address ? (
         <div className="home-button-container">
           <button className={'glowie-button'} onClick={disconnectWallet}>Disconnect Wallet</button>
+          <p className="glowie-text">You can mine a Dickel for every $ you pledge at <a href='https://backed.by/TheDickShow'>backed.by/TheDickShow</a>. What can you do with Dickels? Idk... Thank you for supporting the show!</p>
           <p className="glowie-text">Your address: {address}</p>
           <p className="glowie-text">
             Your balance: {tokenBalance?.displayValue} {tokenBalance?.symbol}  <br/>
           </p>
-          <div className="loading">{isLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">Contract Name: {data}</p>}</div>
-          <div className="loading">{allowanceLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">Allowance: {allowance.toNumber()}</p>}</div>
+          <div className="loading">{allowanceLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">You are in deservement of {allowance.toNumber()} Dickels</p>}</div>
           <button className={'glowie-button'} onClick={transferDickels}>Get Dickels</button>
 
         </div>
