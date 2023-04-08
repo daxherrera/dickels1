@@ -9,6 +9,8 @@ import {
   useContractWrite,
 } from "@thirdweb-dev/react";
 
+import './styles/index.css'
+
 export default function Home() {
   // Hooks to connect to the user's MetaMask Wallet and view their address
   const address = useAddress();
@@ -38,21 +40,23 @@ export default function Home() {
  
 
   return (
-    <div>
+    <div className={'home-container'}>
       {address ? (
-        <>
-          <button onClick={disconnectWallet}>Disconnect Wallet</button>
-          <p>Your address: {address}</p>
-          <p>
+        <div className="home-button-container">
+          <button className={'glowie-button'} onClick={disconnectWallet}>Disconnect Wallet</button>
+          <p className="glowie-text">Your address: {address}</p>
+          <p className="glowie-text">
             Your balance: {tokenBalance?.displayValue} {tokenBalance?.symbol}  <br/>
           </p>
-          <div>{isLoading ? <p>Loading...</p> : <p>Contract Name: {data}</p>}</div>
-          <div>{allowanceLoading ? <p>Loading...</p> : <p>Allowance: {allowance.toNumber()}</p>}</div>
-          <button onClick={transferDickels}>Get Dickels</button>
+          <div className="loading">{isLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">Contract Name: {data}</p>}</div>
+          <div className="loading">{allowanceLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">Allowance: {allowance.toNumber()}</p>}</div>
+          <button className={'glowie-button'} onClick={transferDickels}>Get Dickels</button>
 
-        </>
+        </div>
       ) : (
-        <button onClick={connectWithMetamask}>Connect Wallet</button>                
+        <div className="home-button-container">
+          <button className={'glowie-button'} onClick={connectWithMetamask}>Connect Wallet</button>                
+        </div>
       )}
     </div>
   );
