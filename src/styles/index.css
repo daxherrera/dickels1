@@ -1,0 +1,61 @@
+
+body{
+    background-image: url('../../public/dickels-background.jpg');
+    /* background-position-x: -5vw; */
+    background-position-y: -50vh;
+    background-size: cover;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    /* opacity: .50; */
+}
+
+#root{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0,0.5);
+}
+
+.home-container{
+    display: grid;
+}
+
+.glowie-text{
+    text-shadow: #fe38f2 0 0 10px,#fe38f2 0 0 10px;
+    color:#ffaffa;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    justify-self: center;
+}
+
+.glowie-button{
+    font-family: 'VT323', monospace;
+    padding:10px;
+    font-size: 30px;
+    background: transparent;
+    width: fit-content;
+    border:2px solid #ff80f7;
+    box-shadow: inset 0px 0px 30px 6px #fe38f2,0px 0px 30px 10px #fe38f2;
+    color: #dbf7f7;
+    text-shadow: aqua 2px 0 10px,aqua 2px 0 10px;
+    border-radius: 10px;
+    justify-self: center;
+}
+
+.loading{
+    display: grid;
+}
+
+.home-button-container{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin:100px 0px
+    
+}
+
+@media(max-width:600px ){
+    body{
+        background-position-y: 0px;
+    }
+}
