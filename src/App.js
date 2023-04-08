@@ -47,7 +47,7 @@ export default function Home() {
           <p className="glowie-text">You can mine a Dickel for every $ you pledge at <a href='https://backed.by/TheDickShow'>backed.by/TheDickShow</a>. What can you do with Dickels? Idk... Thank you for supporting the show!</p>
           <p className="glowie-text">Your address: {address}</p>
           <p className="glowie-text">
-            Your balance: {tokenBalance?.displayValue} {tokenBalance?.symbol}  <br/>
+            You have {tokenBalance?.displayValue} {tokenBalance?.symbol} Dickels <br/>
           </p>
           <div className="loading">{allowanceLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">You are in deservement of {allowance.toNumber()} Dickels</p>}</div>
           <button className={'glowie-button'} onClick={transferDickels}>Get Dickels</button>
