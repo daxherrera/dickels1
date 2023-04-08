@@ -40,6 +40,14 @@ body{
     text-shadow: aqua 2px 0 10px,aqua 2px 0 10px;
     border-radius: 10px;
     justify-self: center;
+    opacity: .85;
+    transition: .2s;
+}
+
+.glowie-button:hover{
+    cursor: pointer;
+    opacity: 1;
+    
 }
 
 .loading{
@@ -53,6 +61,8 @@ body{
     margin:100px 0px
     
 }
+
+
 
 @media(max-width:600px ){
     body{
