@@ -8,7 +8,6 @@ import {
   useContractRead,
   useContractWrite,
 } from "@thirdweb-dev/react";
-
 import './styles/index.css'
 
 export default function Home() {
@@ -29,6 +28,8 @@ export default function Home() {
     "0x5fda8baa7d5e9404fe72166c9a767bb875b0efab",
     address
   );
+  console.log(allowance);
+  console.log(allowance/10**18);
 
   const { data: tokenBalance } = useTokenBalance(token, address);
 
@@ -49,8 +50,8 @@ export default function Home() {
           <p className="glowie-text">
             You have {tokenBalance?.displayValue} Dickels <br/>
           </p>
-          <div className="loading">{allowanceLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">You are in deservement of {allowance.toNumber()} Dickels</p>}</div>
-          <button className={'glowie-button'} onClick={transferDickels}>Get Dickels</button>
+          <div className="loading">{allowanceLoading ? <p className="glowie-text">Loading...</p> : <p className="glowie-text">You are in deservement of {allowance /10**18} Dickels</p>}</div>
+          <button className={'glowie-button'} onClick={transferDickels}>Get {allowance/10**18} Dickels</button>
 
         </div>
       ) : (
